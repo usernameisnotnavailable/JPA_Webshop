@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 import java.util.List;
 
@@ -16,6 +17,8 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
      private long id;
      private String email;
+     @Embedded
+     private Address address;
      @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
      private List<CustomerOrder> orders;
 
